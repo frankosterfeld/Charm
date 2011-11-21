@@ -531,6 +531,11 @@ void  WeeklyTimeSheetReport::slotSaveToXml()
     if (filename.isEmpty())
         return;
 
+    QFileInfo fileinfo( filename );
+    if ( fileinfo.suffix().isEmpty() ) {
+        filename += QLatin1String( ".charmreport" );
+    }
+
     try {
         // now create the report:
         QDomDocument document = XmlSerialization::createXmlTemplate( "weekly-timesheet" );
