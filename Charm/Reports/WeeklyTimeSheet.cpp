@@ -653,7 +653,8 @@ void  WeeklyTimeSheetReport::slotSaveToXml()
             document.save( stream, 4 );
         } else {
             QMessageBox::critical( this, tr( "Error saving report" ),
-                                   tr( "Cannot write to selected location." ) );
+                                   tr( "Cannot write to selected location:\n%1" )
+                                   .arg( file.errorString() ) );
         }
 //     qDebug() << "WeeklyTimeSheetReport::slotSaveToXml: generated XML:" << endl
 //              << document.toString( 4 );
